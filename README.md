@@ -4,5 +4,9 @@
 由于有外加库，所以请输入一下命令
 
 pip install tkinter
+
+
 pip install psutil
+
+
 pip install os
