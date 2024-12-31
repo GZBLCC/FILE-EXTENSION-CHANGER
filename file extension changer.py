@@ -26,14 +26,6 @@ style.configure('TLabel', font=('Helvetica', 10), foreground='#333333')
 style.configure('TButton', font=('Helvetica', 10, 'bold'), padding=10)
 style.configure('TEntry', font=('Helvetica', 10), padding=5)
 
-def kill_process(pid):
-    try:
-        p = psutil.Process(pid)
-        p.terminate()  # 或者使用 p.kill() 来强制结束进程
-        return True
-    except (psutil.NoSuchProcess, psutil.AccessDenied):
-        return False
-
 def find_process_using_file(file_path):
     for proc in psutil.process_iter(['pid', 'name', 'open_files']):
         try:
@@ -44,15 +36,6 @@ def find_process_using_file(file_path):
             pass
     return None
 
-def find_process_using_file(file_path):
-    for proc in psutil.process_iter(['pid', 'name', 'open_files']):
-         try:
-             for file in proc.open_files():
-                 if file.path == file_path:
-                      return proc.info
-         except (psutil.NoSuchProcess, psutil.AccessDenied):
-              pass
-         return None
 def kill_process(pid):
      try:
           p = psutil.Process(pid)
